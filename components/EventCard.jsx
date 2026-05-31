@@ -12,10 +12,11 @@ const EventCard = ({ eventData }) => {
       >
         <div>
           <img
-            className="w-full mb-3 group-hover:filter-none shadow-lg m-auto "
+            className="w-full mb-3 group-hover:filter-none shadow-lg m-auto h-[210px] object-cover"
             src={eventData.image}
             alt={eventData.name}
           />
+
           <div className="flex flex-wrap gap-2 items-center">
             {eventData.tags.map((tag) => (
               <Tag text={tag} key={tag} />
