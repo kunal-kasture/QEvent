@@ -14,7 +14,7 @@ const EventCard = ({ eventData }) => {
           <img
             className="w-full  mb-3 group-hover:filter-none shadow-lg m-auto "
             src={eventData.image}
-            alt="Bonnie image"
+            alt={eventData.name}
           />
           <div className="flex gap-2 items-center">
             {eventData.tags.map((tag) => (

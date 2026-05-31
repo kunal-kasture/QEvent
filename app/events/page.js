@@ -1,8 +1,17 @@
-const Events = () => {
+import EventCard from "../../components/EventCard";
+
+const Events = async () => {
+  const res = await fetch(`https://qevent-backend.labs.crio.do/events`);
+  const events = await res.json();
+  console.log(events);
   return (
-    <>
-      <h1 className="font-bold text-2xl p-4 m-2">Events Page</h1>
-    </>
+    <div>
+      <div className="flex flex-wrap justify-center gap-6 p-6">
+        {events.map((event) => (
+          <EventCard key={event.id} eventData={event} />
+        ))}
+      </div>
+    </div>
   );
 };
 
