@@ -5,18 +5,18 @@ import Link from "next/link";
 
 const EventCard = ({ eventData }) => {
   return (
-    <div className="hover-inverse w-[30%] h-fit group transform transition-transform duration-400 hover:scale-110 hover:bg-gradient-to-r hover:from-orange-200 hover:to-white text-dark m-4 border-slate-400 border rounded-md px-8 py-2.5">
+    <div className="hover-inverse w-full h-fit group transform transition-transform duration-400 hover:scale-110 hover:bg-gradient-to-r hover:from-orange-200 hover:to-white text-dark m-4 border-slate-400 border rounded-md px-8 py-2.5 sm:w-[40%] lg:w-[30%]">
       <Link
         href={`#`}
         className="rounded-md text-dark flex-shrink-0 scroll-snap-card p-4"
       >
         <div>
           <img
-            className="w-full  mb-3 group-hover:filter-none shadow-lg m-auto "
+            className="w-full mb-3 group-hover:filter-none shadow-lg m-auto "
             src={eventData.image}
             alt={eventData.name}
           />
-          <div className="flex gap-2 items-center">
+          <div className="flex flex-wrap gap-2 items-center">
             {eventData.tags.map((tag) => (
               <Tag text={tag} key={tag} />
             ))}

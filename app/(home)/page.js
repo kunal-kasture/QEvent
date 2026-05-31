@@ -12,7 +12,7 @@ function App() {
         Explore Events
       </h1>
 
-      <div className="flex items-center justify-around mt-8 mb-32">
+      <div className="flex flex-wrap justify-center gap-6 p-6">
         {dummyEvents.map((eventData) => (
           <EventCard eventData={eventData} />
         ))}
