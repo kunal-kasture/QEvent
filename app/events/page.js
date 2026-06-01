@@ -5,15 +5,21 @@ const Events = async ({ searchParams }) => {
     cache: "no-store",
   });
   const events = await res.json();
-
   const params = await searchParams;
   const artistQuery = params?.artist;
+  const tagQuery = params?.tag;
 
-  const filteredEvents = artistQuery
-    ? events.filter(
-        (event) => event.artist.toLowerCase() === artistQuery.toLowerCase(),
-      )
-    : events;
+  let filteredEvents = events;
+
+  if (artistQuery) {
+    filteredEvents = events.filter(
+      (event) => event.artist.toLowerCase() === artistQuery.toLowerCase(),
+    );
+  } else if (tagQuery) {
+    filteredEvents = events.filter((event) =>
+      event.tags.some((t) => t.toLowerCase() === tagQuery.toLowerCase()),
+    );
+  }
 
   return (
     <div>
