@@ -18,7 +18,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { TfiTicket } from "react-icons/tfi";
 
 const Header = () => {
-  const [session, setSession] = useState(false);
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -82,9 +82,19 @@ const Header = () => {
             <p>Tags</p>
           </Link>
 
+          {/* create event button */}
+          {session && (
+            <Link
+              href={"/create-event"}
+              className="flex items-center justify-center gap-2 text-orange-500 hover:text-primary hover:scale-105 hover:underline-offset-8 hover:underline transition-all"
+            >
+              <p>Create Event</p>
+            </Link>
+          )}
+
           {session ? (
             <button
-              onClick={() => {}}
+              onClick={() => signOut()}
               className=" bg-gradient-to-r from-orange-400 to-teal-600 text-white px-4 py-2 rounded-md font-medium hover:opacity-70"
             >
               Logout
@@ -92,7 +102,7 @@ const Header = () => {
           ) : null}
           {!session ? (
             <button
-              onClick={() => {}}
+              onClick={() => signIn("google")}
               className=" bg-gradient-to-r from-orange-400 to-teal-600 text-white px-4 py-2 rounded-md font-medium hover:opacity-70"
             >
               Log in
@@ -147,10 +157,21 @@ const Header = () => {
               <TfiTicket className="scale-110" />
               <p>Tags</p>
             </Link>
+            {/* create event button */}
+            {session && (
+              <Link
+                href={"/create-event"}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-2 text-orange-500 hover:text-primary hover:scale-105 hover:underline-offset-8 hover:underline transition-all"
+              >
+                <p>Create Event</p>
+              </Link>
+            )}
             {/* Mobile Auth Button */}
             <button
               onClick={() => {
                 setIsOpen(false);
+                session ? signOut() : signIn("google");
               }}
               className="w-full mt-2 bg-gradient-to-r from-orange-400 to-teal-600 text-white py-2.5 rounded-md font-medium text-center hover:opacity-90 transition-all"
             >

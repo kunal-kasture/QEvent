@@ -27,7 +27,7 @@ const EventDetails = async ({ params }) => {
           {eventDetail.artist}
         </h4>
         <div className="flex flex-wrap gap-4 py-4">
-          {eventDetail.tags.map((tag, index) => (
+          {eventDetail?.tags?.map((tag, index) => (
             <div
               key={index}
               className="bg-gradient-to-r from-orange-400 to-teal-600 text-white rounded-2xl w-fit px-3 py-1 text-center font-bold"
